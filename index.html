@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monthly Pass</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="color.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1d86d7">
+    <meta name="theme-color" content="#1d86d7"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="NJ Transit">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<body>
+    <!-- <div id="login-container">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+        <p id="login-message"></p>
+    </div> -->
+    <div class="curved-background" id="curved-background">
+        <div class="header">Monthly Pass</div>
+        <div class="card">
+            <div style="display: grid; justify-content: center;">
+                <div class="qr">
+                    <img class="qr-code" src="your-qr-code-image.png" class="QRCODE" id="QRCODE" alt="QR Code">
+                </div>
+                <div class="tap">Tap to enlarge</div>
+                <div style="border-bottom: 1px dashed #00000050;width: 70vw;padding: 0.2vh;"></div>
+                <div class="info">
+                    <div class="interstate">INTERSTATE</div>
+                    <table style="width: 120%;position: relative;left: -10%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 20%; text-align: center; align-content: flex-start;">
+                                    <div class="month" id="pass_month_year">NOV 2025</div>
+                                </td>
+                                <td style="width: 60%; text-align: center;" rowspan="2">
+                                    <div class="zone">
+                                        <div class="number" onclick="updateZoneText()">2</div>
+                                        <div class="text">ZONE RIDE</div>
+                                    </div>
+                                </td>
+                                <td style="width: 20%; text-align: center;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="progress">
+                <div class="color-strip">
+                    <div class="color-block red"></div>
+                    <div class="color-block green"></div>
+                    <div class="color-block blue"></div>
+                </div>
+                <div class="progress-bar"></div>
+                <div class="expiry">Expires in <span id="countdown">1</span> days.</div>
+                <div class="validator">View Onboard Validator Instructions</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function updateMonthAndYear() {
+            var currentDate = new Date();
+            var monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            var month = monthNames[currentDate.getMonth()];
+            var year = currentDate.getFullYear();
+            var content = month + " " + year;
+            document.getElementById("pass_month_year").innerHTML = content;
+        }
+
+        function updateZoneText() {
+            const zoneElement = document.querySelector('.number');
+            let currentZone = parseInt(zoneElement.textContent, 10);
+            currentZone = currentZone === 9 ? 2 : currentZone + 1;
+            zoneElement.textContent = currentZone;
+        }
+
+        function updateCountdown() {
+            const countdown = document.getElementById('countdown');
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            const deadlineDate = new Date(currentDate.getFullYear(), currentMonth + 1 , 1);
+
+            const timeRemaining = deadlineDate - currentDate;
+
+            const remainingDays = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+            const totalDaysInMonth = new Date(currentDate.getFullYear(), currentMonth + 1, 0).getDate();
+            const daysPassed = currentDate.getDate();
+            const progressPercentage = (daysPassed / totalDaysInMonth) * 100;
+
+            countdown.textContent = `${remainingDays.toString()}`;
+
+            document.querySelector('.progress-bar').style.setProperty('--progress-width', `${100 - progressPercentage}%`);
+        }
+
+        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d86d7");
+
+        updateMonthAndYear();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+    <!--<script>
+        async function validateSession() {
+            const storedPassword = localStorage.getItem("password");
+    
+            if (storedPassword) {
+                try {
+                    const response = await fetch("https://testticket-public-api.vercel.app/login", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ password: storedPassword }),
+                    });
+    
+                    const data = await response.json();
+    
+                    if (response.ok) {
+                        // Show main content if session is valid
+                        document.getElementById("login-container").style.display = "none";
+                        document.getElementById("main-container").style.display = "block";
+                    } else {
+                        // Clear localStorage and ask for login if validation fails
+                        localStorage.removeItem("password");
+                        showLoginScreen();
+                    }
+                } catch (error) {
+                    console.error("Error validating session:", error);
+                    showLoginScreen();
+                }
+            } else {
+                showLoginScreen();
+            }
+        }
+    
+        function showLoginScreen() {
+            document.getElementById("login-container").style.display = "flex";
+            document.getElementById("main-container").style.display = "none";
+        }
+    
+        async function login() {
+            const password = document.getElementById("password").value;
+    
+            try {
+                const response = await fetch("https://testticket-public-api.vercel.app/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ password }),
+                });
+    
+                const data = await response.json();
+                document.getElementById("login-message").textContent = data.message;
+    
+                if (response.ok) {
+                    localStorage.setItem("password", password); // Store password in localStorage
+                    document.getElementById("login-container").style.display = "none";
+                    document.getElementById("main-container").style.display = "block";
+                }
+            } catch (error) {
+                console.error("Login error:", error);
+            }
+        }
+    
+        // Run session validation on page load
+        validateSession();
+    </script>    -->
+</body>
+
+</html>
