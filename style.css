@@ -183,6 +183,11 @@ hr.divider {
     letter-spacing: -1px;
 }
 
+.zone .adult {
+    font-weight: 200;
+    font-size: 14px;
+}
+
 /* Progress pinned to bottom */
 .progress {
     width: 100%;
