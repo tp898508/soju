@@ -130,6 +130,10 @@ hr.divider {
     margin-top: 20px;
 }
 
+.interstate.intrastate {
+    color: #000;
+}
+
 /* Month box + Zone number row */
 .details-row {
     display: flex;
