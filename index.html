@@ -59,43 +59,11 @@
         </div>
 
     </div>
-
-    <!-- <script>
-        function updateMonthAndYear() {
-            var currentDate = new Date();
-            var monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-            var month = monthNames[currentDate.getMonth()];
-            var year = currentDate.getFullYear();
-            document.getElementById("pass_month_year").innerHTML = month + "<br>" + year;
-        }
-
-        function updateZoneText() {
-            const zoneElement = document.querySelector('.number');
-            let currentZone = parseInt(zoneElement.textContent, 10);
-            currentZone = currentZone === 9 ? 2 : currentZone + 1;
-            zoneElement.textContent = currentZone;
-        }
-
-        function updateCountdown() {
-            const countdown = document.getElementById('countdown');
-            const currentDate = new Date();
-            const currentMonth = currentDate.getMonth();
-            const deadlineDate = new Date(currentDate.getFullYear(), currentMonth + 1, 1);
-            const timeRemaining = deadlineDate - currentDate;
-            const remainingDays = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            const totalDaysInMonth = new Date(currentDate.getFullYear(), currentMonth + 1, 0).getDate();
-            const daysPassed = currentDate.getDate();
-            const progressPercentage = (daysPassed / totalDaysInMonth) * 100;
-            countdown.textContent = remainingDays.toString();
-            document.querySelector('.progress-bar').style.setProperty('--progress-width', `${100 - progressPercentage}%`);
-        }
-
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d86d7");
-        updateMonthAndYear();
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script> -->
-
+    
+    <div class="dots" role="img" aria-label="Page 2 of 3">
+        <span class="dot active"></span>
+    </div>
+    
     <script>
         function updateMonthAndYear() {
             var currentDate = new Date();
