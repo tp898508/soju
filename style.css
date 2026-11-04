@@ -16,7 +16,7 @@ body {
     left: 0;
     width: 100%;
     height: calc(38vh + env(safe-area-inset-top));
-    background-color: #2187d4;
+    background-color: #2085d3;
     border-bottom-left-radius: 4% 6%;
     border-bottom-right-radius: 4% 6%;
     z-index: 0;
@@ -254,7 +254,7 @@ hr.divider {
 
 .color-block {
     flex: 1;
-    height: 10px;
+    height: 12px;
     border-radius: 0px;
 }
 
