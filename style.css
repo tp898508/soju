@@ -15,10 +15,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(33vh + env(safe-area-inset-top));
+    height: calc(38vh + env(safe-area-inset-top));
     background-color: #1d86d7;
-    border-bottom-left-radius: 5% 8%;
-    border-bottom-right-radius: 5% 8%;
+    border-bottom-left-radius: 4% 6%;
+    border-bottom-right-radius: 4% 6%;
     z-index: 0;
 }
 
@@ -53,9 +53,9 @@ body::after {
     background: #fff;
     width: 88vw;
     max-width: 400px;
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 24px 16px 12px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
     text-align: center;
     display: flex;
     flex-direction: column;
