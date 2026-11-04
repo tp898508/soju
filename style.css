@@ -64,7 +64,7 @@ body::after {
     top: calc(env(safe-area-inset-top) + 50px);
     left: 50%;
     transform: translateX(-50%);
-    height: calc(100svh - env(safe-area-inset-top) - 50px - 38px - env(safe-area-inset-bottom));
+    height: calc(100svh - env(safe-area-inset-top) - 50px - 28px - env(safe-area-inset-bottom));
     overflow: hidden;
     z-index: 2;
 }
@@ -384,7 +384,7 @@ hr.divider {
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding: 16px 0 calc(16px + env(safe-area-inset-bottom));
+  padding: 16px 0 calc(8px + env(safe-area-inset-bottom));
   z-index: 3; /* above .card's z-index: 2 */
 }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: #8c8c8c; }
