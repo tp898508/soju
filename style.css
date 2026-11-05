@@ -216,7 +216,7 @@ hr.divider {
     justify-content: space-between;
     width: 95%;
     gap: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     animation: blinker 2s ease-in-out infinite;
 }
 
@@ -277,7 +277,7 @@ hr.divider {
     border-radius: 4px;
     overflow: hidden;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .progress-bar::after {
